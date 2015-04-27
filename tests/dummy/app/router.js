@@ -6,4 +6,9 @@ var Router = Ember.Router.extend({
 });
 
 export default Router.map(function() {
+  this.route('profile');
+  this.route('sessions');
+  this.route('payments');
+  this.route('goals');
+  this.route('discussion');
 });

@@ -1,0 +1,61 @@
+.ui-mobile-tab-bar .tab-item {
+    display: table-cell;
+    width: 1%;
+    height: 50px;
+    text-align:center;
+    vertical-align: middle;
+    color: #929292;
+    cursor: pointer;
+}
+.ui-mobile-tab-bar .tab-item.active {
+    color: #428bca;
+    background-color: #F4F4F4;
+}
+.ui-mobile-tab-bar .tab-item:hover {
+    background-color: #EEE;
+    border-radius: 3px;
+}
+.ui-mobile-tab-bar.bottom {
+    position: absolute;
+    bottom: 0px;
+    border-top: 1px solid #929292;
+}
+.ui-mobile-tab-bar.top {
+    position: absolute;
+    top: 0px;
+    border-bottom: 1px solid #929292;
+}
+.ui-mobile-tab-bar.fixed-bottom {
+    position: fixed;
+    bottom: 0px;
+    border-bottom: 1px solid #929292;
+}
+.ui-mobile-tab-bar.fixed-top {
+    position: fixed;
+    top: 0px;
+    border-top: 1px solid #929292;
+}
+
+.ui-mobile-tab-bar .tab-icon {
+    position: relative;
+    display:inline-block;
+    top: 3px;
+    width: 24px;
+    height: 24px;
+    padding-top: 0;
+    padding-bottom: 0;
+    z-index: 20;
+    font-size: 24px;
+    line-height: 1;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+.ui-mobile-tab-bar .tab-label {
+    display:block;
+    font-size: 11px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+

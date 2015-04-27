@@ -2,5 +2,5 @@
 'use strict';
 
 module.exports = {
-  name: 'ui-mobile-footerbar'
+  name: 'ui-mobile-tab-bar'
 };

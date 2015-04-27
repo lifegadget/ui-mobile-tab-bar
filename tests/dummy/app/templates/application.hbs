@@ -1,3 +1,92 @@
-<h2 id="title">Welcome to Ember.js</h2>
+<div class="container">
+    <h1 id="title">ui-mobile-tab-bar</h1>
+    <h2>A familiar navigation menu for mobile apps</h2>
+        
+    <h3>Components</h3>
+    <desc>
+        The navigation menu relies on two components:
+        <ul>
+            <li>
+                ui-mobile-tab-bar
+            </li>
+            <li>
+                ui-mobile-tab-item
+            </li>
+        </ul>
+    
+        As might be guessed the <code>ui-mobile-tab-item</code> component is <em>contained</em> by the menu component. Therefore
+        it is often not necessary to use the <strong>item</strong> component if you're happy to use the inline form of the 
+        <strong>bar</strong> component.
+    </desc>
+    
+    <h3>Basic Usage</h3>
+    <desc>
+    
+    </desc>
+    <examples>
+        <widget class="text-center">
+            <div class="phone-mock">
+                <span class="top"></span>
+                {{ui-mobile-tab-bar position=position active=currentRouteName}}
+            </div>
+        </widget>
+        <sourcecode>
+            {{#code-block language="handlebars" poll=100}}
+<!-- Template only approach -->
+\{{ui-mobile-tab-bar 
+    position='{{position}}'
+    active=currentRouteName
+    icons='user,calendar,money,trophy,comments-o'
+    text='Profile,Sessions,Payments,Goals,Discussion'
+    routes='profile,sessions,payments,goals,discussion'
+}}
 
-{{outlet}}
+
+<!-- Leverage Container's data structure -->
+\{{ui-mobile-tab-bar 
+    position='{{position}}'
+    active=currentRouteName
+    items=items
+}}
+            {{/code-block}}
+            {{#code-block language="js"}}
+Ember.Controller.extend({
+    items: [
+        { text:'Profile', icon: 'user', route: 'profile' },
+        { text:'Sessions', icon: 'user', route: 'sessions' },
+        { text:'Goals', icon: 'trophy', route: 'goals' },
+        { text:'Discussion', icon: 'comments-o', route: 'discussion' },
+    ]
+})               
+            {{/code-block}} 
+        </sourcecode>
+    </examples>
+    <configuration>
+        <columns>
+            <column>
+                Positioning: {{ui-button-radio choices='top,bottom,fixed-top,fixed-bottom' selected=position}}
+            </column>
+            <column>
+                Styling: {{ui-button-radio choices='ios,android' selected=styling}}
+            </column>
+        </columns>
+    </configuration>
+
+
+    <h3>Actions / Routing</h3>
+    <desc>
+        The most common "action" that the tab-bar will take is to navigate to a new route. But seeing as "routable components"
+        still seem to be in a state of flux we'll just avoid that for a moment and pass an action back to container with an 
+        object reference which has the selected 'item'. 
+    </desc>
+    <desc>
+        The item object has a computed property called <code>expectedRoute</code> which is just a dasherized translation of the
+        the text attribute if available, the icon name otherwise, or as a strange don't-see-it-happening fallback it will dasherize
+        the elementId of the item component.
+    </desc>
+
+    <h3>Positioning</h3>
+    <desc>
+        
+    </desc>
+</div>
