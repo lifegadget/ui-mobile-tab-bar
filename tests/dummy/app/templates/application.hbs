@@ -27,7 +27,7 @@
         <widget class="text-center">
             <div class="phone-mock">
                 <span class="top"></span>
-                {{ui-mobile-tab-bar position=position active=currentRouteName}}
+                {{ui-mobile-tab-bar items=items position=position active=currentRouteName action="navigationChanged"}}
             </div>
         </widget>
         <sourcecode>
@@ -39,14 +39,16 @@
     icons='user,calendar,money,trophy,comments-o'
     text='Profile,Sessions,Payments,Goals,Discussion'
     routes='profile,sessions,payments,goals,discussion'
+    action="navigationChanged"
 }}
 
 
 <!-- Leverage Container's data structure -->
 \{{ui-mobile-tab-bar 
-    position='{{position}}'
+    position="{{position}}"
     active=currentRouteName
     items=items
+    action="navigationChanged"
 }}
             {{/code-block}}
             {{#code-block language="js"}}
@@ -54,6 +56,7 @@ Ember.Controller.extend({
     items: [
         { text:'Profile', icon: 'user', route: 'profile' },
         { text:'Sessions', icon: 'user', route: 'sessions' },
+        { text:'Payments', icon: 'money', route: 'payments' },
         { text:'Goals', icon: 'trophy', route: 'goals' },
         { text:'Discussion', icon: 'comments-o', route: 'discussion' },
     ]

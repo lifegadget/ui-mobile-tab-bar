@@ -1,6 +1,6 @@
-# Ui-mobile-footerbar
+# ui-mobile-tab-bar
 
-This README outlines the details of collaborating on this Ember addon.
+> A mobile looking tab bar for header or footer.
 
 ## Installation
 

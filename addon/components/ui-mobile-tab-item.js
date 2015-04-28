@@ -9,17 +9,23 @@ export default Ember.Component.extend(SharedIconsMixin,{
   classNameBindings: ['isActive:active'],
   tagName: 'div',
   icon: computed.alias('item.icon'),
+  route: computed.alias('item.route'),
   text: computed.alias('item.text'),
   item: null,
   active: null,
-  isActive: computed('item','active',function() {
+  isActive: Ember.on('didInsertElement', computed('item','active',function() {
     let { item, active } = this.getProperties('item','active');
+    // active route may be a compound route and we're only interested in the last part of it for comparison sake
+    active = active.split('.').slice(-1)[0];
+    console.log('active is: ' + active);
     let id = item.id || item.text ? Ember.String.dasherize(item.text) : Ember.String.dasherize(item.text);
     return id === active;
-  }),
+  })),
   expectedRoute: computed('icon','text','elementId', function() {
-    let { icon, text, elementId } = this.getProperties('icon','text','elementId');
-    if(text) {
+    let { route, icon, text, elementId } = this.getProperties('route', 'icon','text','elementId');
+    if(route) {
+      return route;
+    } else if(text) {
       return Ember.String.dasherize(text);
     } else if(icon) {
       return Ember.String.dasherize(icon);
