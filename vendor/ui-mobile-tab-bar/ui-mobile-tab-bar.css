@@ -1,3 +1,7 @@
+.ui-mobile-tab-bar {
+    background-color: white;
+    z-index: 1000;
+}
 .ui-mobile-tab-bar .tab-item {
     display: table-cell;
     width: 1%;
@@ -28,12 +32,12 @@
 .ui-mobile-tab-bar.fixed-bottom {
     position: fixed;
     bottom: 0px;
-    border-bottom: 1px solid #929292;
+    border-top: 1px solid #929292;
 }
 .ui-mobile-tab-bar.fixed-top {
     position: fixed;
     top: 0px;
-    border-top: 1px solid #929292;
+    border-bottom: 1px solid #929292;
 }
 
 .ui-mobile-tab-bar .tab-icon {
