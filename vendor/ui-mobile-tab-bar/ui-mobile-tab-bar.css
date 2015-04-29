@@ -32,11 +32,13 @@
 .ui-mobile-tab-bar.fixed-bottom {
     position: fixed;
     bottom: 0px;
+    left:0;
     border-top: 1px solid #929292;
 }
 .ui-mobile-tab-bar.fixed-top {
     position: fixed;
     top: 0px;
+    left: 0;
     border-bottom: 1px solid #929292;
 }
 
