@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import layout from '../templates/components/ui-mobile-tab-bar';
-const { $, A, Component, computed } = Ember;
+const { $, A, Component, computed } = Ember; // jshint ignore:line
 
 export default Component.extend({
   layout: layout,
@@ -8,13 +8,25 @@ export default Component.extend({
   classNames: ['ui-mobile-tab-bar'],
   classNameBindings: ['position'],
   position: 'bottom',
-  items: new A([
-    {text:'Profile', icon:'user'},
-    {text:'Sessions', icon:'calendar'},
-    {text:'Payments', icon:'money'},
-    {text:'Goals', icon:'trophy'},
-    {text:'Discussion', icon:'comments-o'},
-  ]),
+  items: new A(),
+  // if dotted route then look optimistically for aspects the possible options
+  _active: Ember.on('init', computed('active', function() {
+    let active = this.get('active');
+    console.log('active is: %s', active);
+    if(active && active.indexOf('.') !== -1) {
+      let options = this.get('items').map( item => {
+        return item.route ? item.route : String(item.text).toLowerCase();
+      });
+      let routeParts = active.split('.');
+      routeParts.forEach( item => {
+        if (A(options).contains(item)) {     
+          active = item;
+        }
+      });
+    } 
+    
+    return active;
+  })),
   iconFamily: 'fa',
   
   actions: {
