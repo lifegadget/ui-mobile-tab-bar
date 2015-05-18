@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import layout from '../templates/components/ui-mobile-tab-item';
-import SharedIconsMixin from '../mixins/ui-shared-icons.js';
+import SharedIconsMixin from 'ui-mobile-tab-bar/mixins/ui-shared-icons';
 const { $, A, Component, computed } = Ember;
 
 export default Ember.Component.extend(SharedIconsMixin,{
