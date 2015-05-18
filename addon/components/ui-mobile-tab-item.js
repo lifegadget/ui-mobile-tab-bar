@@ -16,10 +16,10 @@ export default Ember.Component.extend(SharedIconsMixin,{
   isActive: Ember.on('didInsertElement', computed('item','active',function() {
     let { item, active } = this.getProperties('item','active'); // jshint ignore:line
     let id;
-    if(get('item.id')) {
-      id = dasherize(get('item.id'));
-    } else if (get('item.text')) {
-      id = dasherize(get('item.text'));      
+    if(get(this, 'item.id')) {
+      id = dasherize(get(this,'item.id'));
+    } else if (get(this,'item.text')) {
+      id = dasherize(get(this,'item.text'));      
     } else {
       id = null;
     }
