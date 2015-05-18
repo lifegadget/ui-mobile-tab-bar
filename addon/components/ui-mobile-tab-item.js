@@ -1,7 +1,8 @@
 import Ember from 'ember';
 import layout from '../templates/components/ui-mobile-tab-item';
 import SharedIconsMixin from 'ui-mobile-tab-bar/mixins/ui-shared-icons';
-const { $, A, Component, computed } = Ember;
+const { computed, observer, $, A, run, on, typeOf, debug, keys, get, set } = Ember;    // jshint ignore:line
+const dasherize = Ember.String.dasherize;
 
 export default Ember.Component.extend(SharedIconsMixin,{
   layout: layout,
@@ -13,8 +14,16 @@ export default Ember.Component.extend(SharedIconsMixin,{
   text: computed.alias('item.text'),
   item: null,
   isActive: Ember.on('didInsertElement', computed('item','active',function() {
-    let { item, active } = this.getProperties('item','active');
-    let id = item.id || item.text ? Ember.String.dasherize(item.text) : Ember.String.dasherize(item.text);
+    let { item, active } = this.getProperties('item','active'); // jshint ignore:line
+    let id;
+    if(get('item.id')) {
+      id = dasherize(get('item.id'));
+    } else if (get('item.text')) {
+      id = dasherize(get('item.text'));      
+    } else {
+      id = null;
+    }
+    
     return id === active;
   })),
   expectedRoute: computed('icon','text','elementId', function() {
@@ -22,14 +31,14 @@ export default Ember.Component.extend(SharedIconsMixin,{
     if(route) {
       return route;
     } else if(text) {
-      return Ember.String.dasherize(text);
+      return dasherize(text);
     } else if(icon) {
-      return Ember.String.dasherize(icon);
+      return dasherize(icon);
     } 
     
-    return Ember.String.dasherize(elementId);
+    return dasherize(elementId);
   }),
-  click: function(evt) {
+  click: function() {
     this.sendAction('action', this);
   }
 });

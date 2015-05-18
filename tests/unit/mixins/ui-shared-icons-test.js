@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import UiSharedIconsMixin from '../../../mixins/ui-shared-icons';
+import UiSharedIconsMixin from 'ui-mobile-tab-bar/mixins/ui-shared-icons';
 import { module, test } from 'qunit';
 
 module('UiSharedIconsMixin');

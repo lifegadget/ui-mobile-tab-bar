@@ -19,7 +19,7 @@ export default Component.extend({
       });
       let routeParts = active.split('.');
       routeParts.forEach( item => {
-        if (A(options).contains(item)) {     
+        if (new A(options).contains(item)) {     
           active = item;
         }
       });
