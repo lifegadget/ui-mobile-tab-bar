@@ -1,6 +1,6 @@
 {
   "name": "ui-mobile-tab-bar",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A mobile navigation tab.",
   "directories": {
     "doc": "doc",
@@ -15,6 +15,20 @@
   "engines": {
     "node": ">= 0.10.0"
   },
+  "files": [
+    "Brocfile.js",
+    "LICENSE.md",
+    "README.md",
+    "addon",
+    "app",
+    "bower.json",
+    "config",
+    "index.js",
+    "package.json",
+    "testem.json",
+    "vendor"
+  ],
+	"main": "index.js",
   "author": "",
   "license": "MIT",
   "devDependencies": {
